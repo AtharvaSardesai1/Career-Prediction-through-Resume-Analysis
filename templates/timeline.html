@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Workflow</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 14px;
+        }
+
+        body {
+            background: #f6f9fc;
+            font-family: "Open Sans", sans-serif;
+            color: #525f7f;
+        }
+
+        h2 {
+            margin: 5%;
+            text-align: center;
+            font-size: 4rem;
+            font-weight: 100;
+        }
+
+        h1 {
+            margin: 4%;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 10;
+            top: 0;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .timeline__event {
+            margin-bottom: 20px;
+            position: relative;
+            display: flex;
+            margin: 20px 0;
+            border-radius: 6px;
+            align-self: center;
+            width: 50vw;
+        }
+
+        .timeline__event:nth-child(2n + 1) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline__event:nth-child(2n + 1) .timeline__event__date {
+            border-radius: 0 6px 6px 0;
+        }
+
+        .timeline__event:nth-child(2n + 1) .timeline__event__content {
+            border-radius: 6px 0 0 6px;
+        }
+
+        .timeline__event:nth-child(2n + 1) .timeline__event__icon::before {
+            content: "";
+            width: 2px;
+            height: 100%;
+            background: #f6a4ec;
+            position: absolute;
+            top: 0%;
+            left: 50%;
+            right: auto;
+            z-index: -1;
+            transform: translateX(-50%);
+            animation: fillTop 2s forwards 4s ease-in-out;
+        }
+
+        .timeline__event:nth-child(2n + 1) .timeline__event__icon::after {
+            content: "";
+            width: 100%;
+            height: 2px;
+            background: #f6a4ec;
+            position: absolute;
+            right: 0;
+            z-index: -1;
+            top: 50%;
+            left: auto;
+            transform: translateY(-50%);
+            animation: fillLeft 2s forwards 4s ease-in-out;
+        }
+
+        .timeline__event__title {
+            font-size: 1.2rem;
+            line-height: 1.4;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: #9251ac;
+            letter-spacing: 1.5px;
+        }
+
+        .timeline__event__content {
+            padding: 20px;
+            box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25),
+                0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+            background: #fff;
+            width: calc(40vw - 84px);
+            border-radius: 0 6px 6px 0;
+        }
+
+        .timeline__event__date {
+            color: #f6a4ec;
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: #9251ac;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            padding: 0 20px;
+            border-radius: 6px 0 0 6px;
+        }
+
+        .timeline__event__icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9251ac;
+            padding: 20px;
+            align-self: center;
+            margin: 0 20px;
+            background: #f6a4ec;
+            border-radius: 100%;
+            width: 40px;
+            box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25),
+                0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+            padding: 40px;
+            height: 40px;
+            position: relative;
+        }
+
+        .timeline__event__icon i {
+            font-size: 32px;
+        }
+
+        .timeline__event__icon::before {
+            content: "";
+            width: 2px;
+            height: 100%;
+            background: #f6a4ec;
+            position: absolute;
+            top: 0%;
+            z-index: -1;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: fillTop 2s forwards 4s ease-in-out;
+        }
+
+        .timeline__event__icon::after {
+            content: "";
+            width: 100%;
+            height: 2px;
+            background: #f6a4ec;
+            position: absolute;
+            left: 0%;
+            z-index: -1;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: fillLeftOdd 2s forwards 4s ease-in-out;
+        }
+
+        .timeline__event__description {
+            flex-basis: 100%;
+        }
+
+        .timeline__event:last-child .timeline__event__icon::before {
+            content: none;
+        }
+
+        .timeline__event--type2::after {
+            background: #555ac0;
+        }
+
+        .timeline__event--type2 .timeline__event__date {
+            color: #87bbfe;
+            background: #555ac0;
+        }
+
+        .timeline__event--type2:nth-child(2n + 1) .timeline__event__icon::before,
+        .timeline__event--type2:nth-child(2n + 1) .timeline__event__icon::after {
+            background: #87bbfe;
+        }
+
+        .timeline__event--type2 .timeline__event__icon {
+            background: #87bbfe;
+            color: #555ac0;
+        }
+
+        .timeline__event--type2 .timeline__event__icon::before,
+        .timeline__event--type2 .timeline__event__icon::after {
+            background: #87bbfe;
+        }
+
+        .timeline__event--type2 .timeline__event__title {
+            color: #555ac0;
+        }
+
+        .timeline__event--type3::after {
+            background: #24b47e;
+        }
+
+        .timeline__event--type3 .timeline__event__date {
+            color: #aff1b6;
+            background-color: #24b47e;
+        }
+
+        .timeline__event--type3:nth-child(2n + 1) .timeline__event__icon::before,
+        .timeline__event--type3:nth-child(2n + 1) .timeline__event__icon::after {
+            background: #aff1b6;
+        }
+
+        .timeline__event--type3 .timeline__event__icon {
+            background: #aff1b6;
+            color: #24b47e;
+        }
+
+        .timeline__event--type3 .timeline__event__icon::before,
+        .timeline__event--type3 .timeline__event__icon::after {
+            background: #aff1b6;
+        }
+
+        .timeline__event--type3 .timeline__event__title {
+            color: #24b47e;
+        }
+
+        @media (max-width: 786px) {
+            .timeline__event {
+                flex-direction: column;
+                align-self: center;
+            }
+
+            .timeline__event__content {
+                width: 100%;
+            }
+
+            .timeline__event__icon {
+                border-radius: 6px 6px 0 0;
+                width: 100%;
+                margin: 0;
+                box-shadow: none;
+            }
+
+            .timeline__event__icon::before,
+            .timeline__event__icon::after {
+                display: none;
+            }
+
+            .timeline__event__date {
+                border-radius: 0;
+                padding: 20px;
+            }
+
+            .timeline__event:nth-child(2n + 1) {
+                flex-direction: column;
+                align-self: center;
+            }
+
+            .timeline__event:nth-child(2n + 1) .timeline__event__date {
+                border-radius: 0;
+                padding: 20px;
+            }
+
+            .timeline__event:nth-child(2n + 1) .timeline__event__icon {
+                border-radius: 6px 6px 0 0;
+                margin: 0;
+            }
+        }
+
+        @keyframes fillLeft {
+            100% {
+                right: 100%;
+            }
+        }
+
+        @keyframes fillTop {
+            100% {
+                top: 100%;
+            }
+        }
+
+        @keyframes fillLeftOdd {
+            100% {
+                left: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://kit.fontawesome.com/fc596df623.js" crossorigin="anonymous"></script>
+
+    <h2>System workflow</h2>
+    <!-- <h1>Job Domain Prediction</h1> -->
+
+    <div class="timeline">
+
+        <!--first-->
+        <div class="timeline__event  animated fadeInUp delay-3s timeline__event--type1">
+            <div class="timeline__event__icon ">
+                <!-- <i class="lni-sport"></i>-->
+
+            </div>
+            <div class="timeline__event__date">
+                Step 1
+            </div>
+            <div class="timeline__event__content ">
+                <div class="timeline__event__title">
+                    Login / Signup
+                </div>
+                <div class="timeline__event__description">
+                    <p>This is done through our Flask App setup which is integrated with MYSQL Database.
+                        New User has to create his/her account. Once the account is created users can 
+                    Login using their credentials and which will stored securely in hashed form in our database.  </p>
+                </div>
+            </div>
+        </div>
+
+        <!--second-->
+
+        <div class="timeline__event animated fadeInUp delay-2s timeline__event--type2">
+            <div class="timeline__event__icon">
+                <!-- <i class="lni-sport"></i>-->
+
+            </div>
+            <div class="timeline__event__date">
+                Step 2
+            </div>
+            <div class="timeline__event__content">
+                <div class="timeline__event__title">
+                    Basic User details and Resume submission
+                </div>
+                <div class="timeline__event__description">
+                    <p>User has to fill some basic details like age, location, years of experience, etc which are required 
+                        by our model for salary prediction. Also user has to submit his/her Resume in .txt or .pdf format. 
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!--third-->
+
+        <div class="timeline__event animated fadeInUp delay-1s timeline__event--type3">
+            <div class="timeline__event__icon">
+                <!-- <i class="lni-sport"></i>-->
+
+            </div>
+            <div class="timeline__event__date">
+                Step 3
+            </div>
+            <div class="timeline__event__content">
+                <div class="timeline__event__title">
+                    Resume parsing and Preprocessing
+                </div>
+                <div class="timeline__event__description">
+                    <p>The resume parsing is done with the help of Natural Language Processing (spcay library).
+                        If the resume format is .pdf then PyMuPDF library extracts the text from PDF.
+                        Text is cleaned (symbols,links,etc removed) to increase the accuracy of the prediction model.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <!--forth-->
+
+        <div class="timeline__event animated fadeInUp timeline__event--type1">
+            <div class="timeline__event__icon">
+                <!-- <i class="lni-sport"></i>-->
+
+            </div>
+            <div class="timeline__event__date">
+                Step 4
+            </div>
+            <div class="timeline__event__content">
+                <div class="timeline__event__title">
+                    Job Category Prediction
+                </div>
+                <div class="timeline__event__description">
+                    <p>Job category prediction classifies text (e.g., resumes) into predefined categories
+                         using a TF-IDF vectorizer to convert text into numerical features. 
+                         These features are passed through a OneVsRestClassifier with a K-Nearest Neighbors (KNN) model
+                          for each category. The model predicts the most relevant categories based on the input text,
+                           commonly used in resume screening and job recommendation systems.</p>
+                </div>
+            </div>
+        </div>
+
+        <!--first-->
+        <div class="timeline__event  animated fadeInUp delay-3s timeline__event--type1">
+            <div class="timeline__event__icon ">
+                <!-- <i class="lni-sport"></i>-->
+
+            </div>
+            <div class="timeline__event__date">
+                Step 5
+            </div>
+            <div class="timeline__event__content ">
+                <div class="timeline__event__title">
+                    Resume Tone Prediction
+                </div>
+                <div class="timeline__event__description">
+                    <p>Tone prediction classifies the tone of text (e.g., resumes or messages) using a DistilBERT model.
+                         The text is tokenized and processed using Hugging Face's tokenizer. The model predicts the tone by analyzing the text's sentiment
+                          returning a label (e.g., Formal, Confident, Informal) and a confidence score.
+                         This is commonly used to assess the tone of written content, such as resumes or emails.</p>
+                </div>
+            </div>
+        </div>
+
+        <!--second-->
+
+        <div class="timeline__event animated fadeInUp delay-2s timeline__event--type2">
+            <div class="timeline__event__icon">
+                <!-- <i class="lni-sport"></i>-->
+
+            </div>
+            <div class="timeline__event__date">
+                Step 6
+            </div>
+            <div class="timeline__event__content">
+                <div class="timeline__event__title">
+                    Skills and Courses recommendation
+                </div>
+                <div class="timeline__event__description">
+                    <p>The user is given a recommendation of skills and courses according
+                        to his/her predicted domain. The courses are found using Web scraping and 
+                        mapped to Domains using python dictionary.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!--third-->
+
+        <div class="timeline__event animated fadeInUp delay-1s timeline__event--type3">
+            <div class="timeline__event__icon">
+                <!-- <i class="lni-sport"></i>-->
+
+            </div>
+            <div class="timeline__event__date">
+                Step 7
+            </div>
+            <div class="timeline__event__content">
+                <div class="timeline__event__title">
+                    Salary Prediction
+                </div>
+                <div class="timeline__event__description">
+                    <p>The Salary prediction model is built using a Random Forest Regressor.
+                        It preprocesses the data by encoding categorical features and standardizing numerical ones
+                        . The model is trained and evaluated on the dataset using cross-validation and metrics like MSE, MAE,
+                         and R². Hyperparameter tuning is performed with GridSearchCV to optimize the model.
+                          The best model is saved and used to predict salaries for new candidates.
+                           Additionally, a decision tree
+                        from the Random Forest is visualized to interpret feature importance and model decisions.</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!--forth-->
+
+        <div class="timeline__event animated fadeInUp timeline__event--type1">
+            <div class="timeline__event__icon">
+                <!-- <i class="lni-sport"></i>-->
+
+            </div>
+            <div class="timeline__event__date">
+                Step 8
+            </div>
+            <div class="timeline__event__content">
+                <div class="timeline__event__title">
+                    Career Path Prediction
+                </div>
+                <div class="timeline__event__description">
+                    <p>
+                        We construct a career graph using networkx and Graph Convolutional Networks (GCNs)
+                         with PyTorch Geometric (PyG) for career path recommendations. Career nodes represent job roles,
+                          with edges indicating relationships. Node features, such as programming languages
+                           and experience level, are used for training. A two-layer GCN model is defined to predict career
+                            paths,
+                         and the graph is converted into a PyG Data object for processing and training.</p>
+                </div>
+            </div>
+        </div>
+
+        
+
+    </div>
+</body>
+
+</html>
