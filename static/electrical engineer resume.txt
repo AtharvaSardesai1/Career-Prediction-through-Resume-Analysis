@@ -1,0 +1,46 @@
+Alexander Nelson
+ Assistant Electrical Engineer
+ Work Experience
+ Jacobs Engineering- Assistant Electrical Engineer
+ 2023 - current
+ a.nelson@email.com
+ (123) 456-7890
+ Richmond, VA
+ LinkedIn
+ Richmond, VA
+ Assisted in the installation of electrical systems across 15+ industrial projects, ensuring compliance
+ with safety and regulatory standards.
+ Leveraged Java applications for automated electrical systems testing, eliminating 6 manual tasks.
+ Digitized contract approvals with DocuSign, speeding up project documentation by 53 minutes.
+ Helped senior engineers 
+develop 3 power distribution plans and improve Jacobs Engineering’s overall
+ system reliability.
+ Hewlett Packard Enterprise- Test Technician
+ 2020 - 2023
+ Richmond, VA
+ Tested electrical schematics using OrCAD, expediting circuit troubleshooting times by 3 hours.
+ Analyzed energy consumption in power devices with DIgSILENT PowerFactory, 
+7.6% decrease in power loss.
+ contributing to a
+ Used Dialux to test backlight systems in laptops, complying with all industry and federal standards.
+ Oversaw performance of 9 test equipment, identifying and resolving minor prompt issues to maintain
+ a 98.3% equipment uptime.
+ General Electric (GE)- Apprentice Electrician
+ 2018 - 2020
+ Simulated electrical circuits on Multisim, 
+Salem, VA
+ reducing 14% of reporting testing errors via accurate
+ analysis.
+ Created monthly Power BI reports to visualize energy consumption trends, helping senior engineers
+ prevent 6 downtime incidents across multiple manufacturing plants.
+ Participated in the installation of solar panels, contributing to building 4 renewable energy projects.
+ Repaired electrical faults with the help of logic analyzers, mitigating low-level system halts by 13%.
+ Education
+ University of Virginia- Bachelor of Science, Electrical Engineering
+ 2014 - 2018
+ Skills
+ Charlottesville, VA
+ AutoCAD; Multisim; Dialux; Basecamp; Java; Power BI; Logic Analyzer; OrCAD; DIgSILENT
+ PowerFactory; DocuSign
+ License
+ Professional Engineer (PE) License

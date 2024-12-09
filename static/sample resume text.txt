@@ -1,0 +1,35 @@
+Nadia Delgado
+ Java Developer
+ n.delgado@email.com
+ WORK EXPERIENCE
+ (123) 456-7890
+ Detroit, MI
+ LinkedIn
+ Deloitte- Java Developer
+ May 2018 - current
+ Lansing, MI
+ Designed software solutions by analyzing system performance standards, increasing performance
+ efficiency by 27%.
+ Planned, tracked, and managed 100+ deliverables on short-term sprints and long-term software
+ deployments.
+ Developed and executed 300+ test procedures for software components.
+ Perficient- Junior Java Developer
+ January 2016 - April 2018
+ Ann Arbor
+ Designed and coded 60+ unit/integration testing using Perficient methodology.
+ Utilized strong configuration management and version control to ensure peak system performance
+ throughout 20+ changes.
+ Created 70+ detailed design documentation, unit test plans, and well-documented code used by 12
+week summer intern program.
+ Arup- Software Developer Intern
+ June 2015 - January 2016
+ Ann Arbor, MI
+ Collaborated with 15+ experts across a range of domains to identify and study data sets to produce
+ visuals and other tools.
+ Worked with R&D team to identify critical, emerging technologies, and performed strategic research.
+ EDUCATION
+ University of Michigan- B.S., Computer Science
+ September 2011 - June 2015
+ SKILLS
+ Ann Arbor, MI
+ Java; JavaScript; Angular.js; HTML; CSS; UNIX; SQL; Eclipse; Oracle; React.j
